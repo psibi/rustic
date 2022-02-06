@@ -123,3 +123,10 @@ list of substrings of `STR' each followed by its face."
     (when buffer-file-name
       (setq-local compilation-ask-about-save nil)))
 (add-hook 'rustic-mode-hook 'rustic-mode-auto-save-hook)
+
+(defun rustic-test--wait-till-finished (buffer)
+  (let* ((buf-string (with-current-buffer buffer
+                       (buffer-substring-no-properties (point-min) (point-max)))))
+    (while (s-contains? "finished at" buf-string)
+      (sleep-for 2)
+      (setf buf-string (buffer-substring-no-properties (point-min) (point-max))))))
