@@ -666,19 +666,6 @@ in your project like `pwd'"
              (split-string command))))
     (rustic-compilation-start c (append (list :no-default-dir t) args))))
 
-;;;###autoload
-(defun rustic-cargo-build (&optional arg)
-  "Run 'cargo build' for the current project, allow configuring
-`rustic-cargo-build-arguments' when prefix argument (C-u) is enabled."
-  (interactive "P")
-  (when arg
-    (setq rustic-cargo-build-arguments
-          (read-string "Cargo build arguments: " "")))
-  (rustic-run-cargo-command `(,(rustic-cargo-bin)
-                              ,rustic-cargo-build-exec-command
-                              ,@(split-string rustic-cargo-build-arguments))
-                            (list :clippy-fix t)))
-
 (defvar rustic-clean-arguments nil
   "Holds arguments for 'cargo clean', similar to `compilation-arguments`.")
 
