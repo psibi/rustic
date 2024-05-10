@@ -379,10 +379,7 @@ Execute process in PATH."
          (compat (alist-get 'compat crate)))
     (list name `[,name
                  ,project
-                 ,(if (when (not (string-match "^-" compat))
-                        (version< project compat))
-                      (propertize compat 'font-lock-face 'rustic-cargo-outdated)
-                    compat)
+                 ,compat
                  ,(alist-get 'latest crate)
                  ,(alist-get 'kind crate)
                  ,(if (alist-get 'platform  crate)
