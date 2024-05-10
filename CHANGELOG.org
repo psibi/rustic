@@ -20,3 +20,6 @@
 - Make ~rustic-cargo-test~ rembmer it's universal arguments.
 - ~rustic-recompile~ will remember any universal arguments that is
   passed to it.
+- Fix a bug relating to coloring a column in cargo outdated mode. The
+  version function is not applicable for Rust crates and it's exposed
+  by [[https://docs.rs/serde_yaml/0.9.34+deprecated/serde_yaml/index.html][serde_yaml's]] deprecated version which crashes the mode.
